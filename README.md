@@ -78,7 +78,7 @@ Timestamps were converted to a timezone-aware `pandas.Timestamp` value, in the [
 ### Raw measurements 
  Raw masurements will be available in the folder [/raw-measurements/](/raw-measurements/) in three formats:
 
- - [twomes_raw_measurements.parquet](/raw-measurements/twomes_raw_measurements.parquet): a single [parquet](https://parquet.apache.org/) file with data for all subject ids;
+ - [b4b_raw_measurements.parquet](/raw-measurements/b4b_raw_measurements.parquet): a single [parquet](https://parquet.apache.org/) file with data for all subject ids;
  - nnnnnn_raw_measurements.parquet: [parquet](https://parquet.apache.org/) files, one for each subject id;
  - nnnnnn_raw_measurements.zip: [zip](https://en.wikipedia.org/wiki/ZIP_(file_format))ped [csv](https://en.wikipedia.org/wiki/Comma-separated_values) files, one for each subject id;
 
@@ -103,7 +103,7 @@ TODO: insert pandas.read_csv() code here
 ### Raw propertes 
  In the folder [/raw-properties/](/raw-properties/) we will make various measured properties available in an 'unstacked' format with each property in its own column and an appropriate datatype. Similar to measurements, we will make data available in three formats:
 
- - [twomes_raw_properties.parquet](/raw-properties/twomes_raw_measurements.parquet): a single [parquet](https://parquet.apache.org/) file with data for all subject ids;
+ - [b4b_raw_properties.parquet](/raw-properties/b4b_raw_measurements.parquet): a single [parquet](https://parquet.apache.org/) file with data for all subject ids;
  - nnnnnn_raw_properties.parquet: [parquet](https://parquet.apache.org/) files, one for each subject id;
  - nnnnnn_raw_properties.zip: 23 [zip](https://en.wikipedia.org/wiki/ZIP_(file_format))ped [csv](https://en.wikipedia.org/wiki/Comma-separated_values) files, one for each subject id;
 
