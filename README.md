@@ -146,7 +146,7 @@ Below is a table that lists all properties that were measured, the data type in 
 
 TO DO: change preprocessing description below.
 
-Preprocessing of measurements from the measurement database was done using [get_preprocessed_homes_data()](https://github.com/energietransitie/twomes-twutility-inverse-grey-box-analysis/blob/main/data/extractor.py). Preprocessing steps include:
+Preprocessing of measurements from the measurement database was done using [get_preprocessed_b4b_data()](https://github.com/energietransitie/twomes-twutility-inverse-grey-box-analysis/blob/main/data/extractor.py). Preprocessing steps include:
 - removal of duplicate measurements;
 - calculation of derived properties as a combination of other properties, as indicated in the column `Calculation` in the table below;
 - removal of absolute outliers, i.e measurement values smaller than the value in the column `Min` or larger than the value in the column `Max` in the table below;
