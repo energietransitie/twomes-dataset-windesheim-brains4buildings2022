@@ -60,8 +60,6 @@ The file [b4b-room-metadata.zip](metadata\b4b-room-metadata.zip) contains metada
 
 <sup>1</sup>, <sup>2</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
 
-<sup>2</sup>: 
-=======
 
 ## Data
 
