@@ -1,5 +1,5 @@
-# Brains4Buildings Windesheim dataset 
-A dataset with CO₂ concentration, ventilation rate and and occupancy data of 6 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project for a few feews during the autumn of 2022.
+# Brains4Buildings2022 dataset 
+This repository contains a dataset with CO₂ concentration, ventilation rate and and occupancy data of 3 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project.
 
 **Note**: [Git LFS](https://git-lfs.github.com/) is required to clone big CSV files
 
@@ -14,7 +14,7 @@ A dataset with CO₂ concentration, ventilation rate and and occupancy data of 6
 
 ## General info
 
-For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation rate and and occupancy data. This data was collected to answer two research quenstions:
+For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation rate and and occupancy data for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
 
 A. To what extent can we reliably derive ventilation rates in a room from:
  * Measured time series data about the occupancy in that room, and
@@ -26,7 +26,7 @@ B.	To what extent can we reliably derive occupancy in a room based on:
 
 ## Recruitment 
 
-Subjects were recruited via a recruitment e-mail targeted at people known to work in office rooms that satisfied the [inclusion criteria](#inclusion-criteria) for office rooms. Subjects could volunteer to participate and give informed consent by filling out an [online recruitment survey]() ([this survey is also available in XML-format]()).
+Subjects were recruited via a recruitment e-mail targeted at people known to work in office rooms that satisfied the [inclusion criteria](#inclusion-criteria) for office rooms. Subjects could volunteer to participate and give informed consent by filling out an [online recruitment survey](data_management\Vragenlijst_B4B_Bluetooth-extra.pdf), which is ([also available in Qualtrics qsf-format](data_management\Vragenlijst_B4B_Bluetooth-extra.qsf)).
 
 ## Inclusion criteria
 
@@ -45,7 +45,7 @@ We only installed a [Twomes M5Stack CoreInk + SCD41](https://github.com/energiet
 
 ## Data management
 
-TO DO: Replace this text with (links to) data management plan, privacy policy and (if applicable), DPIA.
+This repository includes the [Data Management Plan](data_management\DMP_online_Brains4Buildings_data_collection_Windesheim_winter_2022-2023.pdf) and [privacy policy (in Dutch)](data_management\privacy\index.html) for this study, which can be expanded to a [summary](data_management\privacy\privacy-summary.html) and a [full version](data_management\privacy\privacy-full.html). For the study we requested and obtained [permission from the Windesheim Research Ethics Committee (document in Dutch)](data_management\ethische_goedkeuring_B4B-ECOhW-2022-003.pdf).  
 
 ## Data
 
@@ -55,7 +55,7 @@ In the sections below, the data pre-processing and data formats used in the data
 
 We used the following measurement device types and data sources to collect data.
 
-| Source/Device type name | Description                                | Open source repository of devcie                             |
+| Source/Device type name | Description                                | Open source repository of device                             |
 | ----------------------- | ------------------------------------------ | ------------------------------------------------------------ |
 | `CO2-meter-SCD4x`       | M5Stack CoreInk + SCD41 measurement device | [twomes-scd41-presence-firmware](https://github.com/energietransitie/twomes-scd41-presence-firmware) |
 | `bms`                   | building management system                 |                                                              |
@@ -64,11 +64,9 @@ We used the following measurement device types and data sources to collect data.
 
 ### Date and time information
 
-All timestamps collected by the `CO2-meter-SCD4x`  devices were measured in [Unix time](https://en.wikipedia.org/wiki/Unix_time) format, using device clocks regularly synchronized via NTP with the correct UTC time. Setting the local device clock to the proper UTC time via NTP was one of the first steps performed by the measurement devices after they were connected to the internet via the home Wi-Fi network of a subject. Each measurement device synchronized its device clock via NTP every 6 hours. Uploads of measurement data (which could contain more than one measurement) were timestamped both by the measurement device according to the local device clock and by the server. We did not yet check for deviations between the last device timestamp of a measurement upload and the upload timestamp at the server.
+All timestamps collected by the `CO2-meter-SCD4x` devices were measured in [Unix time](https://en.wikipedia.org/wiki/Unix_time) format, using device clocks regularly synchronized via NTP with the correct UTC time. Setting the local device clock to the proper UTC time via NTP was one of the first steps performed by the measurement devices after they were connected to the internet via the home Wi-Fi network of a subject. Each measurement device synchronized its device clock via NTP every 6 hours. Uploads of measurement data (which could contain more than one measurement) were timestamped both by the measurement device according to the local device clock and by the server. We did not yet check for deviations between the last device timestamp of a measurement upload and the upload timestamp at the server.
 
-Timestamps of `bms` and `xovis` sources were assumed to be in the [Europe/Amsterdam](https://en.wikipedia.org/wiki/Time_in_the_Netherlands) timezone. 
-
-TO DO: describe how we verified this.
+Timestamps of `bms` and `xovis` sources were recorded in the [Europe/Amsterdam](https://en.wikipedia.org/wiki/Time_in_the_Netherlands) timezone. 
 
 Timestamps collected by human observers were also registered in the the [Europe/Amsterdam](https://en.wikipedia.org/wiki/Time_in_the_Netherlands) timezone.
 
