@@ -1,8 +1,6 @@
 # Brains4Buildings2022 dataset 
 This repository contains a dataset with CO₂ concentration, ventilation rate and occupancy data of 3 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project.
 
-**Note**: [Git LFS](https://git-lfs.github.com/) is required to clone big CSV files
-
 ## Table of contents
 * [General info](#general-info)
 * [Subject Recruitment](#recruitment)
