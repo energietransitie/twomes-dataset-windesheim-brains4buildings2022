@@ -1,5 +1,5 @@
 # Brains4Buildings2022 dataset 
-This repository contains a dataset with CO₂ concentration, ventilation rate and occupancy data of 3 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project.
+This repository contains a dataset with CO₂ concentration, ventilation flow rate and occupancy data of 3 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project.
 
 ## Table of contents
 * [General info](#general-info)
@@ -14,7 +14,7 @@ This repository contains a dataset with CO₂ concentration, ventilation rate an
 
 ## General info
 
-For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation rate and occupancy for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
+For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation flow rate and occupancy for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
 
 A. To what extent can we reliably derive the ventilation flow rate in a room from:
  * Measured time series data about the occupancy in that room, and
@@ -57,7 +57,7 @@ The file [b4b-room-metadata.zip](metadata/b4b-room-metadata.zip) contains metada
 | 917810 | 75       | 240              |
 | 925038 | 60       | 210              |
 
-<sup>1</sup>, <sup>2</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
+<sup>1</sup>, <sup>2</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation flow rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
 
 
 ## Data
@@ -152,7 +152,7 @@ Below is a table that lists all properties that were measured, the data type in 
 <sup>1</sup>: `valve_frac__0` contains a fraction, i.e. a float between 0 and 1 that expressed the fraction of the maximum ventilation flow in that room;
 - This value was derived from a voltage value registered by the Building Management System (BMS):
 - The ventilation valves are physically constrained such that when the valve position voltage was registered at 0 V, the minimum opening of 20% is in effect (i.e. `valve_frac__0` = 0.20) and when the valve valve-position voltage of 10V means the valve is 100% open (i.e. `valve_frac__0` = 1.00).
-- The ventilation system uses a regulator that makes sure there is a constant pressure, so the ventilation rate is not dependent on recent valve openings in nearby rooms, or only for very brief moments a few seconds, or in any case within a minute or so.
+- The ventilation system uses a regulator that makes sure there is a constant pressure, so the ventilation flow rate is not dependent on recent valve openings in nearby rooms, or only for very brief moments a few seconds, or in any case within a minute or so.
 - We measured data in 6 rooms in 2 different buildings, each with a different BMS. For one building, the valve fraction data were only available for export for 24h after they were recorded. This initially implied we would not have retrospective `valve_frac__0` data for 4 of the 6 rooms we measured. Since the covid-19 pandemic, however, ventilation systems were set to max. At least, that was the intention. This was implemented by setting the ventilation setpoint to 400 ppm, implying the `valve_frac__0` = 1.00 at all ties would be a reasonable assumption. Unfortunately, for 3 out of the 4 rooms in the building concerned, the room CO₂ sensors connected the bms were not calibrated properly: they often registered CO₂ concentration values well below 400 ppm, values that seem highly unlikely when looking at the [Keeling Curve](https://keelingcurve.ucsd.edu/) of the last 5 years or so. Therefore, we had to leave out 3 rooms from our analyses. We decided to leave them out of this open dataset as well.
 
 ### Preprocessed data 
