@@ -3,7 +3,8 @@ This repository contains a dataset with CO₂ concentration, ventilation rate an
 
 ## Table of contents
 * [General info](#general-info)
-* [Subject Recruitment](#recruitment)
+* [Data management](#data-management)
+* [Subject recruitment](#subject-recruitment)
 * [Inclusion criteria](#inclusion-criteria)
 * [Metadata](#metadata) 
 * [Data](#data) 
@@ -13,42 +14,42 @@ This repository contains a dataset with CO₂ concentration, ventilation rate an
 
 ## General info
 
-For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation rate and occupancy data for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
+For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation rate and occupancy for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
 
-A. To what extent can we reliably derive ventilation rates in a room from:
+A. To what extent can we reliably derive the ventilation flow rate in a room from:
  * Measured time series data about the occupancy in that room, and
  * Measured data about the CO₂ concentration in a room?
 
 B.	To what extent can we reliably derive occupancy in a room based on:
- * Measured data about the ventilation rate in a room, and 
+ * Measured data about the ventilation flow rate in a room, and 
  * Measured data about the CO₂ concentration in a room?
-
-## Recruitment 
-
-Subjects were recruited via a recruitment e-mail targeted at people known to work in office rooms that satisfied the [inclusion criteria](#inclusion-criteria) for office rooms. Subjects could volunteer to participate and give informed consent by filling out an [online recruitment survey](data_management\Vragenlijst_B4B_Bluetooth-extra.pdf), which is ([also available in Qualtrics qsf-format](data_management\Vragenlijst_B4B_Bluetooth-extra.qsf)).
-
-## Inclusion criteria
-
-Inclusion criteria for office rooms were:
-* office rooms at Windesheim were only eligible if we could obtain PIR-based occupancy data and CO₂ concentration data via the existing Building Management System (BMS);
-* 75% or more of the occupants of an office room must consent to their presence being tracked.  
-
-Inclusion criteria for subjects were:
-* subjects must work at Windesheim University of Applied Sciences in one of the eligible office rooms, typically for more than one hour per week;
-* subjects must have a smartphone;
-* subjects must give the static Bluetooth MAC address of their smartphone to the researchers for the purpose of the research;
-* subjects must be willing to turn / leave on their Bluetooth on their smartphone when they were at Windesheim.
-
-
-We only installed a [Twomes M5Stack CoreInk + SCD41](https://github.com/energietransitie/twomes-scd41-presence-firmware) measurement device in an office room if more than 75% of the known number of regular office room occupants provided informed consent. We never tracked presence via Bluetooth without informed consent; the measurement devices we use are technically incapable of tracking Bluetooth based presence without a static Bluetooth MAC-address.
 
 ## Data management
 
-This repository includes the [Data Management Plan](data_management\DMP_online_Brains4Buildings_data_collection_Windesheim_winter_2022-2023.pdf) and [privacy policy (in Dutch)](data_management\privacy\index.html) for this study, which can be expanded to a [summary](data_management\privacy\privacy-summary.html) and a [full version](data_management\privacy\privacy-full.html). For the study we requested and obtained [permission from the Windesheim Research Ethics Committee (document in Dutch)](data_management\ethische_goedkeuring_B4B-ECOhW-2022-003.pdf).  
+Before we started recruitment, we requested and [obtained approval for our study from Windesheim Research Ethics Committee](https://edu.nl/vfcgp), based on a description of the research, the [privacy policy](https://edu.nl/x8wpd) and [Data Management Policy](https://edu.nl/y7tyx). 
+
+## Subject recruitment
+
+Subjects were recruited via a recruitment e-mail targeted at people known to work in office rooms that satisfied the [inclusion criteria](#inclusion-criteria) for office rooms.
+
+## Inclusion criteria
+
+Inclusion criteria for office rooms at Windesheim  were:
+* PIR-based occupancy data, CO₂ concentration data and ventilation data was available via the existing Building Management System (BMS);
+* 75% or more of the occupants of an office room must consent to their presence being tracked.  
+
+Inclusion criteria for subjects were:
+* subjects provided informed by filling out an [online recruitment survey](https://edu.nl/cnh8v), ([also available in Qualtrics qsf-format](https://edu.nl/t6pbv)), which also referred to the [privacy policy](https://edu.nl/x8wpd) and verified the inclusion criteria below;
+* subjects must work at Windesheim University of Applied Sciences in one of the eligible office rooms, typically for more than one hour per week;
+* subjects must have a smartphone running Android or an Apple iPhone;
+* subjects must give the static Bluetooth MAC address of their smartphone to the researchers for the purpose of the research;
+* subjects must be willing to turn / leave on their Bluetooth on their smartphone when they were at Windesheim.
+
+We only installed a [Twomes M5Stack CoreInk + SCD41](https://edu.nl/ca8py) measurement device in an office room if more than 75% of the known number of regular office room occupants provided informed consent. We never tracked presence via Bluetooth without informed consent; the measurement devices we use are technically incapable of tracking Bluetooth based presence without a static Bluetooth MAC-address.
 
 ## Metadata
 
-The file [b4b-room-metadata.zip](metadata\b4b-room-metadata.zip) contains metadata that may be needed for analysis for each of the three rooms in the open dataset. 
+The file [b4b-room-metadata.zip](metadata/b4b-room-metadata.zip) contains metadata that may be needed for analysis for each of the three rooms in the open dataset. 
 
 | id     | room__m3 <sup>1</sup> | vent_max__m3_h_1 <sup>2</sup>|
 |--------|----------|------------------|
@@ -69,14 +70,14 @@ We used the following measurement device types and data sources to collect data.
 
 | Source/Device type name | Description                                | Open source repository of device                             |
 | ----------------------- | ------------------------------------------ | ------------------------------------------------------------ |
-| `CO2-meter-SCD4x`       | M5Stack CoreInk + SCD41 measurement device | [twomes-scd41-presence-firmware](https://github.com/energietransitie/twomes-scd41-presence-firmware) |
+| `CO2-meter-SCD4x`       | M5Stack CoreInk SCD41 measurement device for CO₂ and occupancy | [twomes-scd41-presence-firmware](https://edu.nl/ca8py) |
 | `bms`                   | building management system                 |                                                              |
 | `xovis`                 | Xovis PC2SE 3Dsensor                       |                                                              |
 | `human_observer`        | data collected by human observers          |                                                              |
 
 ### Date and time information
 
-All timestamps collected by the `CO2-meter-SCD4x` devices were measured in [Unix time](https://en.wikipedia.org/wiki/Unix_time) format, using device clocks regularly synchronized via NTP with the correct UTC time. Setting the local device clock to the proper UTC time via NTP was one of the first steps performed by the measurement devices after they were connected to the internet via the home Wi-Fi network of a subject. Each measurement device synchronized its device clock via NTP every 6 hours. Uploads of measurement data (which could contain more than one measurement) were timestamped both by the measurement device according to the local device clock and by the server. We did not yet check for deviations between the last device timestamp of a measurement upload and the upload timestamp at the server.
+All timestamps collected by the `CO2-meter-SCD4x` devices were measured in [Unix time](https://en.wikipedia.org/wiki/Unix_time) format, using device clocks synchronized  via NTP with the correct UTC time, immediately after the measuement device was installed and connected to the itnernet and every 6 hours after that. Uploads of measurement data (which could contain more than one measurement) were timestamped both by the measurement device according to the local device clock and by the server. We did not yet check for deviations between the last device timestamp of a measurement upload and the upload timestamp at the server.
 
 Timestamps of `bms` and `xovis` sources were recorded in the [Europe/Amsterdam](https://en.wikipedia.org/wiki/Time_in_the_Netherlands) time zone. 
 
