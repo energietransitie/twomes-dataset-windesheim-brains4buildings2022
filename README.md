@@ -154,17 +154,27 @@ Below is a table that lists all properties that were measured, the data type in 
 - The ventilation system uses a regulator that makes sure there is a constant pressure, so the ventilation flow rate is not dependent on recent valve openings in nearby rooms, or only for very brief moments a few seconds, or in any case within a minute or so.
 - We measured data in 6 rooms in 2 different buildings, each with a different BMS. For one building, the valve fraction data were only available for export for 24h after they were recorded. This initially implied we would not have retrospective `valve_frac__0` data for 4 of the 6 rooms we measured. Since the covid-19 pandemic, however, ventilation systems were set to max. At least, that was the intention. This was implemented by setting the ventilation setpoint to 400 ppm, implying the `valve_frac__0` = 1.00 at all times would be a reasonable assumption. Unfortunately, for 3 out of the 4 rooms in the building concerned, the room CO₂ sensors connected the bms were not calibrated properly: they often registered CO₂ concentration values well below 400 ppm, values that seem highly unlikely when looking at the [Keeling Curve](https://keelingcurve.ucsd.edu/) of the last 2 years. Therefore, we had to leave out 3 rooms from our analyses. We decided to leave them out of this open dataset as well.
 
+### Weather measurements
+
+Weather data was collected and geospatially interpolated using [HourlyHistoricWeather](https://github.com/stephanpcpeters/HourlyHistoricWeather) from the Royal Netherlands Meteorological Institute ([KNMI](https://www.knmi.nl/over-het-knmi/about)), based on average hourly values. 
+
+For geospatial interpolation of weather data we used [`lat, lon = 52.499255, 6.0765167`](https://www.openstreetmap.org/?mlat=52.499255&mlon=6.0765167#map=17/52.499255/6.0765167), the location of hogeschool Windesheim in Zwolle, the Netherlands. Average values were converted from the source units to the units as indicated in the table below. 
+
+
+| Index/Column | Property        | Type        | Unit            | Measurement interval \[h:mm:ss\] | Description                                                  | Source | [Source property](https://www.daggegevens.knmi.nl/klimatologie/uurgegevens) | [Source value format](https://en.wikipedia.org/wiki/Printf_format_string) | Source unit                                            |
+| ------------ | --------------- | ----------- | --------------- | -------------------------------- | ------------------------------------------------------------ | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
+| index        | `timestamp`     | `Timestamp` |                 |                                  | start of the measurement interval | KNMI   | `YYYMMDD`, `H`                                               |                                                              | H=1: 0:00:00 - 0:59:59; H=24: 23:00:00 - 23:59:59; |
+| column       | `temp_out__degC` | `float32`   | °C              | 1:00:00                          | outdoor temperature                                          | KNMI   | ` T`                                                         | %d                                                           | 0.1&nbsp;°C                                            |
+| column       | `wind__m_s_1`    | `float32`   | m/s             | 1:00:00                          | wind speed                                                   | KNMI   | ` FH`                                                        | %d                                                           | 0.1&nbsp;m/s                                           |
+| column       | `ghi__W_m_2`     | `float32`   | W/m<sup>2</sup> | 1:00:00                          | global horizontal irradiance                                 | KNMI   | ` Q`                                                         | %d                                                           | J/(h·cm<sup>2</sup>)                                       |
 ### Preprocessed data 
 
-TO DO: change preprocessing description below.
-
 Preprocessing of measurements from the measurement database was done using [get_preprocessed_b4b_data()](https://github.com/energietransitie/twomes-twutility-inverse-grey-box-analysis/blob/main/data/extractor.py). Preprocessing steps include:
-- removal of duplicate measurements;
-- calculation of derived properties as a combination of other properties, as indicated in the column `Calculation` in the table below (none, in this particular dataset);
-- removal of absolute outliers, i.e., measurement values smaller than the value in the column `Min` or larger than the value in the column `Max` in the table below;
-- removal of statistic outliers, i.e., measurement values with an absolute [z-score](https://en.wikipedia.org/wiki/Standard_score) higher than the value indicated in the `Sigma` column in the table below (none, for this particular dataset);
-- removal of measurements for properties for ids where the variance is not above the threshold indicated in the `Minimum standard deviation` column in the table below; 
-- interpolation of measurements to intervals of 15 minutes (no interpolation between measurements that were 90 minutes apart or more);
+- Removal of duplicate measurements;
+-	Removal of CO₂ measurements that had no variation; this concerned one room that apparently had a faulty CO₂ sensor (the data for this room was already rejected for other reasons);
+-	Removal all CO₂ concentration measurements with a value of less than 5 ppm (several CO₂ measurement values from the BMS came in as 0 ppm, which clearly wrong);
+- CO₂ baseline adjustment: per room and per measurement source, the minimum CO₂ measurement value was determined and subsequently all measurement values were raised by the same amount such that the minimum value would be to 415 ppm plus a margin (in this case 1 ppm). This preprocessing operation helps to counteract the effect of long term drift that  some CO₂ sensors are subject to. Some CO₂ sensors provide automatic occasional recalibration to a pre-determined CO₂ level. Not all CO₂ sensors used in a study may have this feature, some may have this turned off (sometimes deliberately, to avoid sudden jumps). Some CO₂ sensor may have been calibrated once, but not all in the same circumstances;
+- Interpolation of measurements to intervals of 15 minutes (no interpolation between measurements that were 90 minutes apart or more);
 - All column values represent the average during the interval that starts at the timestamp indicated. 
 
 
