@@ -1,9 +1,10 @@
 # Brains4Buildings2022 dataset 
-This repository contains a dataset with CO₂ concentration, ventilation rate and occupancy data of 3 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project.
+This repository contains a dataset with CO₂ concentration, ventilation flow rate and occupancy data of 3 office spaces at Windesheim University of Applied Sciences collected for the Brains4Buildings project.
 
 ## Table of contents
 * [General info](#general-info)
-* [Subject Recruitment](#recruitment)
+* [Data management](#data-management)
+* [Subject recruitment](#subject-recruitment)
 * [Inclusion criteria](#inclusion-criteria)
 * [Metadata](#metadata) 
 * [Data](#data) 
@@ -13,42 +14,42 @@ This repository contains a dataset with CO₂ concentration, ventilation rate an
 
 ## General info
 
-For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation rate and occupancy data for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
+For the [Brains4Buildings project](https://brains4buildings.org/), we collected data about CO₂ concentration, ventilation flow rate and occupancy for several weeks between October 10 and November 2, 2022. This data was collected to answer two research questions:
 
-A. To what extent can we reliably derive ventilation rates in a room from:
+A. To what extent can we reliably derive the ventilation flow rate in a room from:
  * Measured time series data about the occupancy in that room, and
  * Measured data about the CO₂ concentration in a room?
 
 B.	To what extent can we reliably derive occupancy in a room based on:
- * Measured data about the ventilation rate in a room, and 
+ * Measured data about the ventilation flow rate in a room, and 
  * Measured data about the CO₂ concentration in a room?
-
-## Recruitment 
-
-Subjects were recruited via a recruitment e-mail targeted at people known to work in office rooms that satisfied the [inclusion criteria](#inclusion-criteria) for office rooms. Subjects could volunteer to participate and give informed consent by filling out an [online recruitment survey](data_management\Vragenlijst_B4B_Bluetooth-extra.pdf), which is ([also available in Qualtrics qsf-format](data_management\Vragenlijst_B4B_Bluetooth-extra.qsf)).
-
-## Inclusion criteria
-
-Inclusion criteria for office rooms were:
-* office rooms at Windesheim were only eligible if we could obtain PIR-based occupancy data and CO₂ concentration data via the existing Building Management System (BMS);
-* 75% or more of the occupants of an office room must consent to their presence being tracked.  
-
-Inclusion criteria for subjects were:
-* subjects must work at Windesheim University of Applied Sciences in one of the eligible office rooms, typically for more than one hour per week;
-* subjects must have a smartphone;
-* subjects must give the static Bluetooth MAC address of their smartphone to the researchers for the purpose of the research;
-* subjects must be willing to turn / leave on their Bluetooth on their smartphone when they were at Windesheim.
-
-
-We only installed a [Twomes M5Stack CoreInk + SCD41](https://github.com/energietransitie/twomes-scd41-presence-firmware) measurement device in an office room if more than 75% of the known number of regular office room occupants provided informed consent. We never tracked presence via Bluetooth without informed consent; the measurement devices we use are technically incapable of tracking Bluetooth based presence without a static Bluetooth MAC-address.
 
 ## Data management
 
-This repository includes the [Data Management Plan](data_management\DMP_online_Brains4Buildings_data_collection_Windesheim_winter_2022-2023.pdf) and [privacy policy (in Dutch)](data_management\privacy\index.html) for this study, which can be expanded to a [summary](data_management\privacy\privacy-summary.html) and a [full version](data_management\privacy\privacy-full.html). For the study we requested and obtained [permission from the Windesheim Research Ethics Committee (document in Dutch)](data_management\ethische_goedkeuring_B4B-ECOhW-2022-003.pdf).  
+Before we started recruitment, we requested and [obtained approval for our study from Windesheim Research Ethics Committee](https://edu.nl/vfcgp), based on a description of the research, the [privacy policy](https://edu.nl/x8wpd) and [Data Management Policy](https://edu.nl/y7tyx). 
+
+## Subject recruitment
+
+Subjects were recruited via a recruitment e-mail targeted at people known to work in office rooms that satisfied the [inclusion criteria](#inclusion-criteria) for office rooms.
+
+## Inclusion criteria
+
+Inclusion criteria for office rooms at Windesheim  were:
+* PIR-based occupancy data, CO₂ concentration data and ventilation data was available via the existing Building Management System (BMS);
+* 75% or more of the occupants of an office room must consent to their presence being tracked.  
+
+Inclusion criteria for subjects were:
+* subjects provided informed by filling out an [online recruitment survey](https://edu.nl/cnh8v), ([also available in Qualtrics qsf-format](https://edu.nl/t6pbv)), which also referred to the [privacy policy](https://edu.nl/x8wpd) and verified the inclusion criteria below;
+* subjects must work at Windesheim University of Applied Sciences in one of the eligible office rooms, typically for more than one hour per week;
+* subjects must have a smartphone running Android or an Apple iPhone;
+* subjects must give the static Bluetooth MAC address of their smartphone to the researchers for the purpose of the research;
+* subjects must be willing to turn / leave on their Bluetooth on their smartphone when they were at Windesheim.
+
+We only installed a [Twomes M5Stack CoreInk + SCD41](https://edu.nl/ca8py) measurement device in an office room if more than 75% of the known number of regular office room occupants provided informed consent. We never tracked presence via Bluetooth without informed consent; the measurement devices we use are technically incapable of tracking Bluetooth based presence without a static Bluetooth MAC-address.
 
 ## Metadata
 
-The file [b4b-room-metadata.zip](metadata\b4b-room-metadata.zip) contains metadata that may be needed for analysis for each of the three rooms in the open dataset. 
+The file [b4b-room-metadata.zip](metadata/b4b-room-metadata.zip) contains metadata that may be needed for analysis for each of the three rooms in the open dataset. 
 
 | id     | room__m3 <sup>1</sup> | vent_max__m3_h_1 <sup>2</sup>|
 |--------|----------|------------------|
@@ -56,7 +57,7 @@ The file [b4b-room-metadata.zip](metadata\b4b-room-metadata.zip) contains metada
 | 917810 | 75       | 240              |
 | 925038 | 60       | 210              |
 
-<sup>1</sup>, <sup>2</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
+<sup>1</sup>, <sup>2</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation flow rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
 
 
 ## Data
@@ -69,14 +70,14 @@ We used the following measurement device types and data sources to collect data.
 
 | Source/Device type name | Description                                | Open source repository of device                             |
 | ----------------------- | ------------------------------------------ | ------------------------------------------------------------ |
-| `CO2-meter-SCD4x`       | M5Stack CoreInk + SCD41 measurement device | [twomes-scd41-presence-firmware](https://github.com/energietransitie/twomes-scd41-presence-firmware) |
+| `CO2-meter-SCD4x`       | M5Stack CoreInk SCD41 measurement device for CO₂ and occupancy | [twomes-scd41-presence-firmware](https://edu.nl/ca8py) |
 | `bms`                   | building management system                 |                                                              |
-| `xovis`                 | Xovis PC2SE 3Dsensor                       |                                                              |
+| `xovis`                 | [Xovis PC2SE 3D sensor](https://www.xovis.com/technology/sensor/pc2se-sensor)                       |                                                              |
 | `human_observer`        | data collected by human observers          |                                                              |
 
 ### Date and time information
 
-All timestamps collected by the `CO2-meter-SCD4x` devices were measured in [Unix time](https://en.wikipedia.org/wiki/Unix_time) format, using device clocks regularly synchronized via NTP with the correct UTC time. Setting the local device clock to the proper UTC time via NTP was one of the first steps performed by the measurement devices after they were connected to the internet via the home Wi-Fi network of a subject. Each measurement device synchronized its device clock via NTP every 6 hours. Uploads of measurement data (which could contain more than one measurement) were timestamped both by the measurement device according to the local device clock and by the server. We did not yet check for deviations between the last device timestamp of a measurement upload and the upload timestamp at the server.
+All timestamps collected by the `CO2-meter-SCD4x` devices were measured in [Unix time](https://en.wikipedia.org/wiki/Unix_time) format, using device clocks synchronized  via NTP with the correct UTC time, immediately after the measuement device was installed and connected to the itnernet and every 6 hours after that. Uploads of measurement data (which could contain more than one measurement) were timestamped both by the measurement device according to the local device clock and by the server. We did not yet check for deviations between the last device timestamp of a measurement upload and the upload timestamp at the server.
 
 Timestamps of `bms` and `xovis` sources were recorded in the [Europe/Amsterdam](https://en.wikipedia.org/wiki/Time_in_the_Netherlands) time zone. 
 
@@ -143,28 +144,37 @@ Below is a table that lists all properties that were measured, the data type in 
 | `valve_frac__0` <sup>1</sup>| `float32` | -    | 0:01:00/1:00:00                  | valve opening fraction*                                          | `bms`             |                                                              |                    |                                                              |
 | `occupancy__bool` | `Int8`    | 0/1  | 0:01:00/1:00:00                  | at least 1 person in the room? | `bms`             | PIR                                                          |                    |                                                              |
 | `occupancy__p`    | `Int8`    | 0    | 0:05:00/0:15:00                  | number of persons in room                                   | `xovis`           | [PC2SE](https://www.xovis.com/technology/sensor/pc2se-sensor) |                    |                                                              |                                                   |
-| `occupancy__bool` | `Int8`    | 0/1  | a few times per week | at least 1 person in the room? | `human_observer`             | PIR                                                          |                    |                                                              |
-| `occupancy__bool` | `Int8`    | 0/1  | a few times per week | at least 1 person in the room? | `human_observer`             | human  observer |                    |                                                              |
-| `window_open__bool` | `Int8`    | 0/1  | a few times per week | at least window in the room open? | `human_observer`             | human observer |                    |                                                              |
-| `door_open__bool` | `Int8`    | 0/1  | a few times per week | at least door in the room open? | `human_observer`             | human observer |                    |                                                              |
+| `occupancy__p` | `Int8`    | 0/1  | a few times per week | number of persons in room | `human_observer`             | human observer                                                           |                    |                                                              |
+| `window_open__bool` | `Int8`    | 0/1  | a few times per week | is at least 1 window in the room open? | `human_observer`             | human observer |                    |                                                              |
+| `door_open__bool` | `Int8`    | 0/1  | a few times per week | is at least door in the room open? | `human_observer`             | human observer |                    |                                                              |
 
 <sup>1</sup>: `valve_frac__0` contains a fraction, i.e. a float between 0 and 1 that expressed the fraction of the maximum ventilation flow in that room;
 - This value was derived from a voltage value registered by the Building Management System (BMS):
 - The ventilation valves are physically constrained such that when the valve position voltage was registered at 0 V, the minimum opening of 20% is in effect (i.e. `valve_frac__0` = 0.20) and when the valve valve-position voltage of 10V means the valve is 100% open (i.e. `valve_frac__0` = 1.00).
-- The ventilation system uses a regulator that makes sure there is a constant pressure, so the ventilation rate is not dependent on recent valve openings in nearby rooms, or only for very brief moments a few seconds, or in any case within a minute or so.
-- We measured data in 6 rooms in 2 different buildings, each with a different BMS. For one building, the valve fraction data were only available for export for 24h after they were recorded. This initially implied we would not have retrospective `valve_frac__0` data for 4 of the 6 rooms we measured. Since the covid-19 pandemic, however, ventilation systems were set to max. At least, that was the intention. This was implemented by setting the ventilation setpoint to 400 ppm, implying the `valve_frac__0` = 1.00 at all ties would be a reasonable assumption. Unfortunately, for 3 out of the 4 rooms in the building concerned, the room CO₂ sensors connected the bms were not calibrated properly: they often registered CO₂ concentration values well below 400 ppm, values that seem highly unlikely when looking at the [Keeling Curve](https://keelingcurve.ucsd.edu/) of the last 5 years or so. Therefore, we had to leave out 3 rooms from our analyses. We decided to leave them out of this open dataset as well.
+- The ventilation system uses a regulator that makes sure there is a constant pressure, so the ventilation flow rate is not dependent on recent valve openings in nearby rooms, or only for very brief moments a few seconds, or in any case within a minute or so.
+- We measured data in 6 rooms in 2 different buildings, each with a different BMS. For one building, the valve fraction data were only available for export for 24h after they were recorded. This initially implied we would not have retrospective `valve_frac__0` data for 4 of the 6 rooms we measured. Since the covid-19 pandemic, however, ventilation systems were set to max. At least, that was the intention. This was implemented by setting the ventilation setpoint to 400 ppm, implying the `valve_frac__0` = 1.00 at all times would be a reasonable assumption. Unfortunately, for 3 out of the 4 rooms in the building concerned, the room CO₂ sensors connected the bms were not calibrated properly: they often registered CO₂ concentration values well below 400 ppm, values that seem highly unlikely when looking at the [Keeling Curve](https://keelingcurve.ucsd.edu/) of the last 2 years. Therefore, we had to leave out 3 rooms from our analyses. We decided to leave them out of this open dataset as well.
 
+### Weather measurements
+
+Weather data was collected and geospatially interpolated using [HourlyHistoricWeather](https://github.com/stephanpcpeters/HourlyHistoricWeather) from the Royal Netherlands Meteorological Institute ([KNMI](https://www.knmi.nl/over-het-knmi/about)), based on average hourly values. 
+
+For geospatial interpolation of weather data we used [`lat, lon = 52.499255, 6.0765167`](https://www.openstreetmap.org/?mlat=52.499255&mlon=6.0765167#map=17/52.499255/6.0765167), the location of hogeschool Windesheim in Zwolle, the Netherlands. Average values were converted from the source units to the units as indicated in the table below. 
+
+
+| Index/Column | Property        | Type        | Unit            | Measurement interval \[h:mm:ss\] | Description                                                  | Source | [Source property](https://www.daggegevens.knmi.nl/klimatologie/uurgegevens) | [Source value format](https://en.wikipedia.org/wiki/Printf_format_string) | Source unit                                            |
+| ------------ | --------------- | ----------- | --------------- | -------------------------------- | ------------------------------------------------------------ | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
+| index        | `timestamp`     | `Timestamp` |                 |                                  | start of the measurement interval | KNMI   | `YYYMMDD`, `H`                                               |                                                              | H=1: 0:00:00 - 0:59:59; H=24: 23:00:00 - 23:59:59; |
+| column       | `temp_out__degC` | `float32`   | °C              | 1:00:00                          | outdoor temperature                                          | KNMI   | ` T`                                                         | %d                                                           | 0.1&nbsp;°C                                            |
+| column       | `wind__m_s_1`    | `float32`   | m/s             | 1:00:00                          | wind speed                                                   | KNMI   | ` FH`                                                        | %d                                                           | 0.1&nbsp;m/s                                           |
+| column       | `ghi__W_m_2`     | `float32`   | W/m<sup>2</sup> | 1:00:00                          | global horizontal irradiance                                 | KNMI   | ` Q`                                                         | %d                                                           | J/(h·cm<sup>2</sup>)                                       |
 ### Preprocessed data 
 
-TO DO: change preprocessing description below.
-
 Preprocessing of measurements from the measurement database was done using [get_preprocessed_b4b_data()](https://github.com/energietransitie/twomes-twutility-inverse-grey-box-analysis/blob/main/data/extractor.py). Preprocessing steps include:
-- removal of duplicate measurements;
-- calculation of derived properties as a combination of other properties, as indicated in the column `Calculation` in the table below (none, in this particular dataset);
-- removal of absolute outliers, i.e., measurement values smaller than the value in the column `Min` or larger than the value in the column `Max` in the table below;
-- removal of statistic outliers, i.e., measurement values with an absolute [z-score](https://en.wikipedia.org/wiki/Standard_score) higher than the value indicated in the `Sigma` column in the table below (none, for this particular dataset);
-- removal of measurements for properties for ids where the variance is not above the threshold indicated in the `Minimum standard deviation` column in the table below; 
-- interpolation of measurements to intervals of 15 minutes (no interpolation between measurements that were 90 minutes apart or more);
+- Removal of duplicate measurements;
+-	Removal of CO₂ measurements that had no variation; this concerned one room that apparently had a faulty CO₂ sensor (the data for this room was already rejected for other reasons);
+-	Removal all CO₂ concentration measurements with a value of less than 5 ppm (several CO₂ measurement values from the BMS came in as 0 ppm, which clearly wrong);
+- CO₂ baseline adjustment: per room and per measurement source, the minimum CO₂ measurement value was determined and subsequently all measurement values were raised by the same amount such that the minimum value would be to 415 ppm plus a margin (in this case 1 ppm). This preprocessing operation helps to counteract the effect of long term drift that  some CO₂ sensors are subject to. Some CO₂ sensors provide automatic occasional recalibration to a pre-determined CO₂ level. Not all CO₂ sensors used in a study may have this feature, some may have this turned off (sometimes deliberately, to avoid sudden jumps). Some CO₂ sensor may have been calibrated once, but not all in the same circumstances;
+- Interpolation of measurements to intervals of 15 minutes (no interpolation between measurements that were 90 minutes apart or more);
 - All column values represent the average during the interval that starts at the timestamp indicated. 
 
 
