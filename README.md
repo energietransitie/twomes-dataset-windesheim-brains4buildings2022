@@ -39,7 +39,7 @@ Inclusion criteria for office rooms at Windesheim  were:
 * 75% or more of the occupants of an office room must consent to their presence being tracked.  
 
 Inclusion criteria for subjects were:
-* subjects provided informed by filling out an [online recruitment survey](https://edu.nl/cnh8v), ([also available in Qualtrics qsf-format](https://edu.nl/t6pbv)), which also referred to the [privacy policy](https://edu.nl/x8wpd) and verified the inclusion criteria below;
+* subjects provided informed by filling out an [online recruitment survey](data_management/recruitment/Vragenlijst_B4B_Bluetooth-extra.pdf), ([also available in Qualtrics qsf-format](data_management/recruitment/Vragenlijst_B4B_Bluetooth-extra.qsf)), which also referred to the [privacy policy](data_management/privacy/index.html) and verified the inclusion criteria below;
 * subjects must work at Windesheim University of Applied Sciences in one of the eligible office rooms, typically for more than one hour per week;
 * subjects must have a smartphone running Android or an Apple iPhone;
 * subjects must give the static Bluetooth MAC address of their smartphone to the researchers for the purpose of the research;
