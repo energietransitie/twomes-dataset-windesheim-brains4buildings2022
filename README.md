@@ -26,7 +26,7 @@ B.	To what extent can we reliably derive occupancy in a room based on:
 
 ## Data management
 
-Before we started recruitment, we requested and [obtained approval for our study from Windesheim Research Ethics Committee](https://edu.nl/vfcgp), based on a description of the research, the [privacy policy](https://edu.nl/x8wpd) and [Data Management Policy](https://edu.nl/y7tyx). 
+Before we started recruitment, we requested and [obtained approval for our study from Windesheim Research Ethics Committee](data_management/ethische_goedkeuring_B4B-ECOhW-2022-003.pdf), based on a description of the research, the [privacy policy](data_management/privacy/index.html) and [Data Management Policy](data_management/DMP_online_Brains4Buildings_data_collection_Windesheim_winter_2022-2023.pdf). 
 
 ## Subject recruitment
 
