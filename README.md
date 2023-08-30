@@ -51,13 +51,15 @@ We only installed a [Twomes M5Stack CoreInk + SCD41](https://edu.nl/ca8py) measu
 
 The file [b4b-room-metadata.zip](metadata/b4b-room-metadata.zip) contains metadata that may be needed for analysis for each of the three rooms in the open dataset. 
 
-| id     | room__m3 <sup>1</sup> | vent_max__m3_h_1 <sup>2</sup>|
-|--------|----------|------------------|
-| 999169 | 75       | 240              |
-| 917810 | 75       | 240              |
-| 925038 | 60       | 210              |
+| id     | #work-places | #occupants tracked via Bluetooth<sup>1</sup>   | room__m3 <sup>2</sup> | vent_max__m3_h_1 <sup>3</sup> |
+|--------|--------------|------------------------------------|-----------------------|-------------------------------|
+| 999169 | 6            | 5                                  | 75                    | 240                           |
+| 917810 | 6            | 2                                  | 75                    | 240                           |
+| 925038 | 4            | 3                                  | 60                    | 210                           |
 
-<sup>1</sup>, <sup>2</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation flow rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
+<sup>1</sup>: The coverage of Bluetooth based presence detection in room 917810 is very low compared to the number of work places, making succesfull analysis based on this occupancy data source unlikely for this room. 
+
+<sup>2</sup>, <sup>3</sup>: We rounded `room__m3`, the room volume in  m<sup>3</sup>, to the nearest 5 m<sup>3</sup>, and `vent_max__m3_h_1`, the maximum ventilation flow rate of the room in m<sup>3</sup>/h, to the nearest 30 to the nearest 5 m<sup>3</sup>/h we can guarantee room privacy. In particular, we chose a level of privacy for the room that is equivalent to the level of privacy required for persons participating in medical research in the Netherlands, i.e. the chance of re-identification should be less than 9%.
 
 
 ## Data
